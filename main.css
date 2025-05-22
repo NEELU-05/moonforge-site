@@ -64,6 +64,59 @@ h2 {
   border-radius: 5px;
   cursor: pointer;
 }
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background-color: #0a0f1c;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  padding: 10px;
+  z-index: 999;
+  border-radius: 10px;
+}
+
+.mobile-nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-bottom: 1px solid #3fa9f5;
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .navbar .nav-items {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-nav.show {
+    display: flex;
+  }
+}
+
 .social-icons {
   position: fixed;
   top: 20px;
