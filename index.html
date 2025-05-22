@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moonforge</title>
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
- <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
 </head>
-
 <body>
+
   <nav class="navbar">
     <div class="logo-bar">
       <i class="fas fa-moon"></i>
       <span class="brand-name">Moonforge</span>
     </div>
-    <div class="social-icons">
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="social-icons" id="socialIcons">
       <a href="#" class="icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       <a href="mailto:shukla.ajay07@outlook.com" class="icon email" title="Email"><i class="fas fa-envelope"></i></a>
       <a href="https://wa.me/+919289120161" class="icon whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -33,39 +35,38 @@
     </div>
 
     <div class="section what-we-offer">
-  <h2>What We Offer</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-icon"><i class="fas fa-tools"></i></div>
-      <div class="timeline-content">
-        <h3>Technical Recruitment</h3>
-        <p>Aerospace, Software, Embedded, Systems</p>
+      <h2>What We Offer</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-tools"></i></div>
+          <div class="timeline-content">
+            <h3>Technical Recruitment</h3>
+            <p>Aerospace, Software, Embedded, Systems</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-rocket"></i></div>
+          <div class="timeline-content">
+            <h3>Startup Hiring Strategy</h3>
+            <p>Tailored strategy for high-growth environments</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-file-alt"></i></div>
+          <div class="timeline-content">
+            <h3>Resume Shortlisting & Pre-screening</h3>
+            <p>Save time with pre-vetted candidates</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-comments"></i></div>
+          <div class="timeline-content">
+            <h3>Interview Setup & Follow-up</h3>
+            <p>We handle the scheduling and candidate experience</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-icon"><i class="fas fa-rocket"></i></div>
-      <div class="timeline-content">
-        <h3>Startup Hiring Strategy</h3>
-        <p>Tailored strategy for high-growth environments</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-icon"><i class="fas fa-file-alt"></i></div>
-      <div class="timeline-content">
-        <h3>Resume Shortlisting & Pre-screening</h3>
-        <p>Save time with pre-vetted candidates</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-icon"><i class="fas fa-comments"></i></div>
-      <div class="timeline-content">
-        <h3>Interview Setup & Follow-up</h3>
-        <p>We handle the scheduling and candidate experience</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 
     <div class="section">
       <h2>Why Moonforge</h2>
@@ -94,14 +95,36 @@
   </button>
 
   <div class="form-modal" id="contactForm">
-    <input type="text" id="name" placeholder="Name">
-    <input type="email" id="email" placeholder="Email">
-    <input type="text" id="company" placeholder="Company Name">
+    <input type="text" id="name" placeholder="Name" />
+    <input type="email" id="email" placeholder="Email" />
+    <input type="text" id="company" placeholder="Company Name" />
     <textarea id="message" placeholder="Message"></textarea>
     <button onclick="storeFormData()">Submit</button>
   </div>
 
   <script>
+    const points = [
+      "Helping product-first companies hire top-tier engineers",
+      "We help product-companies hire top-tier technical talent.",
+      "Founded by an aerospace engineer, we know what hiring takes.",
+      "Bold teams build bold products. We're here to help you forge."
+    ];
+    let index = 0;
+    const pointElement = document.getElementById('point');
+
+    function cyclePoints() {
+      pointElement.style.animation = 'none';
+      pointElement.offsetHeight;
+      pointElement.style.animation = '';
+      pointElement.textContent = points[index];
+      index = (index + 1) % points.length;
+    }
+
+    function toggleMenu() {
+      const icons = document.getElementById('socialIcons');
+      icons.classList.toggle('show');
+    }
+
     function toggleForm() {
       const form = document.getElementById('contactForm');
       form.style.display = form.style.display === 'flex' ? 'none' : 'flex';
@@ -114,10 +137,7 @@
       const message = document.getElementById('message').value;
 
       const formData = {
-        name,
-        email,
-        company,
-        message,
+        name, email, company, message,
         timestamp: new Date().toISOString()
       };
 
@@ -130,40 +150,29 @@
       document.getElementById('message').value = '';
     }
 
-    const points = [
-      "Helping product-first companies hire top-tier engineers",
-      "At Moonforge, we help product-companies hire top-tier engineers and technical talent.",
-      "Founded by an aerospace engineer, we know what technical hiring really takes –",
-      "We believe bold teams build bold products. We’re here to help you forge."
-    ];
-
-    let index = 0;
-    const pointElement = document.getElementById('point');
-
-    function cyclePoints() {
-      pointElement.style.animation = 'none';
-      pointElement.offsetHeight; // trigger reflow
-      pointElement.style.animation = '';
-      pointElement.textContent = points[index];
-      index = (index + 1) % points.length;
-    }
-
     cyclePoints();
     setInterval(cyclePoints, 4000);
-  const icons = document.querySelectorAll('.timeline-icon');
-  let currentIndex = 0;
 
-  function glowNextIcon() {
-    icons.forEach((icon, i) => {
-      icon.classList.toggle('glow', i === currentIndex);
+    const icons = document.querySelectorAll('.timeline-icon');
+    let glowIndex = 0;
+    function glowNextIcon() {
+      icons.forEach((icon, i) => {
+        icon.classList.toggle('glow', i === glowIndex);
+      });
+      glowIndex = (glowIndex + 1) % icons.length;
+    }
+    glowNextIcon();
+    setInterval(glowNextIcon, 2000);
+    document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const socialIcons = document.querySelector(".social-icons");
+
+    hamburger.addEventListener("click", () => {
+      socialIcons.classList.toggle("show");
     });
+  });
 
-    currentIndex = (currentIndex + 1) % icons.length;
-  }
-
-  glowNextIcon(); // initial call
-  setInterval(glowNextIcon, 2000); // change every 2 seconds
   </script>
-</body>
 
+</body>
 </html>
