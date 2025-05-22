@@ -64,6 +64,7 @@ h1, h2 {
 .social-icons {
   display: flex;
   gap: 12px;
+  top: 28px;
 }
 
 .icon {
