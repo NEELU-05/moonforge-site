@@ -64,7 +64,6 @@ h1, h2 {
 .social-icons {
   display: flex;
   gap: 12px;
-  top: 28px;
 }
 
 .icon {
@@ -326,22 +325,43 @@ h1, h2 {
     opacity: 0;
   }
 }
+.hamburger {
+  display: none; /* hidden on desktop */
+}
 
-/* Responsive */
 @media (max-width: 768px) {
   .hamburger {
-    display: block;
+    display: flex;
   }
 
   .social-icons {
     display: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
     flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+  }
+   .hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+  }
+ .social-icons {
+    display: none;
     position: absolute;
     top: 60px;
     right: 20px;
     background-color: #0a0f1c;
+    flex-direction: column;
     padding: 10px;
     border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
   .social-icons.show {
