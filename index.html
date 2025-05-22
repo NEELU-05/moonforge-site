@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonforge</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo-bar">
+      <i class="fas fa-moon"></i>
+      <span class="brand-name">Moonforge</span>
+    </div>
+    <div class="social-icons">
+      <a href="#" class="icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:shukla.ajay07@outlook.com" class="icon email" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://wa.me/1234567890" class="icon whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="who-we-are-section">
+      <div class="who-we-are-overlay"></div>
+      <div class="who-we-are-content">
+        <h2>WHO WE ARE</h2>
+        <p class="who-we-are-point" id="point"></p>
+      </div>
+    </div>
+
+    <div class="section what-we-offer">
+  <h2>What We Offer</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-icon"><i class="fas fa-tools"></i></div>
+      <div class="timeline-content">
+        <h3>Technical Recruitment</h3>
+        <p>Aerospace, Software, Embedded, Systems</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-icon"><i class="fas fa-rocket"></i></div>
+      <div class="timeline-content">
+        <h3>Startup Hiring Strategy</h3>
+        <p>Tailored strategy for high-growth environments</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-icon"><i class="fas fa-file-alt"></i></div>
+      <div class="timeline-content">
+        <h3>Resume Shortlisting & Pre-screening</h3>
+        <p>Save time with pre-vetted candidates</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-icon"><i class="fas fa-comments"></i></div>
+      <div class="timeline-content">
+        <h3>Interview Setup & Follow-up</h3>
+        <p>We handle the scheduling and candidate experience</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="section">
+      <h2>Why Moonforge</h2>
+      <div class="flash-cards">
+        <div class="flash-card">
+          <i class="fas fa-cogs"></i>
+          <h3>Engineer-Led</h3>
+          <p>We understand roles deeply, so we send quality, not quantity.</p>
+        </div>
+        <div class="flash-card">
+          <i class="fas fa-rocket"></i>
+          <h3>Startup-Friendly</h3>
+          <p>Quick turnaround, flexible process, success-based model.</p>
+        </div>
+        <div class="flash-card">
+          <i class="fas fa-heart"></i>
+          <h3>Personalized Approach</h3>
+          <p>Every hire matters – and we treat it that way.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="sticky-button" onclick="toggleForm()">
+    <i class="fas fa-envelope"></i> Form
+  </button>
+
+  <div class="form-modal" id="contactForm">
+    <input type="text" id="name" placeholder="Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="text" id="company" placeholder="Company Name">
+    <textarea id="message" placeholder="Message"></textarea>
+    <button onclick="storeFormData()">Submit</button>
+  </div>
+
+  <script>
+    function toggleForm() {
+      const form = document.getElementById('contactForm');
+      form.style.display = form.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function storeFormData() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const company = document.getElementById('company').value;
+      const message = document.getElementById('message').value;
+
+      const formData = {
+        name,
+        email,
+        company,
+        message,
+        timestamp: new Date().toISOString()
+      };
+
+      console.log('Form Data Stored:', formData);
+      alert('Form submitted successfully!');
+
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('company').value = '';
+      document.getElementById('message').value = '';
+    }
+
+    const points = [
+      "Helping product-first companies hire top-tier engineers",
+      "At Moonforge, we help product-companies hire top-tier engineers and technical talent.",
+      "Founded by an aerospace engineer, we know what technical hiring really takes –",
+      "We believe bold teams build bold products. We’re here to help you forge."
+    ];
+
+    let index = 0;
+    const pointElement = document.getElementById('point');
+
+    function cyclePoints() {
+      pointElement.style.animation = 'none';
+      pointElement.offsetHeight; // trigger reflow
+      pointElement.style.animation = '';
+      pointElement.textContent = points[index];
+      index = (index + 1) % points.length;
+    }
+
+    cyclePoints();
+    setInterval(cyclePoints, 4000);
+  const icons = document.querySelectorAll('.timeline-icon');
+  let currentIndex = 0;
+
+  function glowNextIcon() {
+    icons.forEach((icon, i) => {
+      icon.classList.toggle('glow', i === currentIndex);
+    });
+
+    currentIndex = (currentIndex + 1) % icons.length;
+  }
+
+  glowNextIcon(); // initial call
+  setInterval(glowNextIcon, 2000); // change every 2 seconds
+  </script>
+</body>
+
+</html>
