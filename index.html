@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moonforge</title>
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
 </head>
-
 <body>
+
   <nav class="navbar">
     <div class="logo-bar">
       <i class="fas fa-moon"></i>
       <span class="brand-name">Moonforge</span>
     </div>
     <div class="hamburger" onclick="toggleMenu()">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+      <i class="fas fa-bars"></i>
     </div>
     <div class="social-icons" id="socialIcons">
       <a href="#" class="icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -98,14 +95,36 @@
   </button>
 
   <div class="form-modal" id="contactForm">
-    <input type="text" id="name" placeholder="Name">
-    <input type="email" id="email" placeholder="Email">
-    <input type="text" id="company" placeholder="Company Name">
+    <input type="text" id="name" placeholder="Name" />
+    <input type="email" id="email" placeholder="Email" />
+    <input type="text" id="company" placeholder="Company Name" />
     <textarea id="message" placeholder="Message"></textarea>
     <button onclick="storeFormData()">Submit</button>
   </div>
 
   <script>
+    const points = [
+      "Helping product-first companies hire top-tier engineers",
+      "We help product-companies hire top-tier technical talent.",
+      "Founded by an aerospace engineer, we know what hiring takes.",
+      "Bold teams build bold products. We're here to help you forge."
+    ];
+    let index = 0;
+    const pointElement = document.getElementById('point');
+
+    function cyclePoints() {
+      pointElement.style.animation = 'none';
+      pointElement.offsetHeight;
+      pointElement.style.animation = '';
+      pointElement.textContent = points[index];
+      index = (index + 1) % points.length;
+    }
+
+    function toggleMenu() {
+      const icons = document.getElementById('socialIcons');
+      icons.classList.toggle('show');
+    }
+
     function toggleForm() {
       const form = document.getElementById('contactForm');
       form.style.display = form.style.display === 'flex' ? 'none' : 'flex';
@@ -118,10 +137,7 @@
       const message = document.getElementById('message').value;
 
       const formData = {
-        name,
-        email,
-        company,
-        message,
+        name, email, company, message,
         timestamp: new Date().toISOString()
       };
 
@@ -134,47 +150,29 @@
       document.getElementById('message').value = '';
     }
 
-    const points = [
-      "Helping product-first companies hire top-tier engineers",
-      "At Moonforge, we help product-companies hire top-tier engineers and technical talent.",
-      "Founded by an aerospace engineer, we know what technical hiring really takes –",
-      "We believe bold teams build bold products. We’re here to help you forge."
-    ];
-
-    let index = 0;
-    const pointElement = document.getElementById('point');
-
-    function cyclePoints() {
-      pointElement.style.animation = 'none';
-      pointElement.offsetHeight;
-      pointElement.style.animation = '';
-      pointElement.textContent = points[index];
-      index = (index + 1) % points.length;
-    }
-
     cyclePoints();
     setInterval(cyclePoints, 4000);
 
     const icons = document.querySelectorAll('.timeline-icon');
-    let currentIndex = 0;
-
+    let glowIndex = 0;
     function glowNextIcon() {
       icons.forEach((icon, i) => {
-        icon.classList.toggle('glow', i === currentIndex);
+        icon.classList.toggle('glow', i === glowIndex);
       });
-
-      currentIndex = (currentIndex + 1) % icons.length;
+      glowIndex = (glowIndex + 1) % icons.length;
     }
-
     glowNextIcon();
     setInterval(glowNextIcon, 2000);
+    document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const socialIcons = document.querySelector(".social-icons");
 
-    function toggleMenu() {
-      const socialIcons = document.getElementById('socialIcons');
-      socialIcons.style.display = socialIcons.style.display === 'flex' ? 'none' : 'flex';
-      socialIcons.style.flexDirection = 'column';
-    }
+    hamburger.addEventListener("click", () => {
+      socialIcons.classList.toggle("show");
+    });
+  });
+
   </script>
-</body>
 
+</body>
 </html>
