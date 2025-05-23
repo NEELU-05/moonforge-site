@@ -241,13 +241,14 @@ h1, h2 {
 
 .contact-form button,
 .form-modal button {
-  padding: 10px 20px;
-  background-color: #3fa9f5;
-  border: none;
+  background: #007BFF;
   color: white;
-  font-weight: bold;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
 }
 
 /* Sticky Button */
@@ -255,35 +256,42 @@ h1, h2 {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #007bff;
+  background: #007BFF;
   color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 10px 20px;
+  padding: 12px 20px;
   font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 30px;
   display: flex;
   align-items: center;
   gap: 10px;
   z-index: 1000;
 }
-
 /* Form Modal */
 .form-modal {
   position: fixed;
   bottom: 80px;
-  right: 20px;
-  background-color: #fff;
+  right: 10px;
+  width: 90%;
+  max-width: 400px;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   display: none;
   flex-direction: column;
-  width: 300px;
+  z-index: 999;
 }
-
+.form-modal input,
+.form-modal textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
 /* Animations */
 @keyframes slideFade {
   0% {
