@@ -95,12 +95,16 @@
   </button>
 
   <div class="form-modal" id="contactForm">
-    <input type="text" id="name" placeholder="Name" />
-    <input type="email" id="email" placeholder="Email" />
-    <input type="text" id="company" placeholder="Company Name" />
-    <textarea id="message" placeholder="Message"></textarea>
-    <button onclick="storeFormData()">Submit</button>
-  </div>
-    <script src="scripts/back.js"></script>
+  <form action="/submit-form" method="POST">
+    <input type="text" name="name" placeholder="Name" required/>
+    <input type="email" name="email" placeholder="Email" required/>
+    <input type="text" name="company" placeholder="Company Name" required/>
+    <textarea name="message" placeholder="Message"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+
+  <script src="scripts/back.js"></script>
 </body>
 </html>
