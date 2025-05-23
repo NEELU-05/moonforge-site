@@ -1,8 +1,7 @@
-CREATE TABLE contact_form (
+CREATE TABLE contacts (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100),
-  email VARCHAR(100),
-  company VARCHAR(100),
-  message TEXT,
-  submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  name VARCHAR(255),
+  email VARCHAR(255),
+  company VARCHAR(255),
+  message TEXT
 );
